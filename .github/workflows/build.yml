@@ -10,7 +10,12 @@ jobs:
         with:
           node-version: 18
       - run: npm install
-      - run: npm run build
+      
+      - name: Build App
+        run: npm run build
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
       - uses: actions/upload-artifact@v4
         with:
           name: SmartPrint-Setup
